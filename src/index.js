@@ -1,14 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createHashRouter, RouterProvider } from "react-router-dom";
+import Pokedex from "./Pokedex";
+import Pokemon from "./Pokemon";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const hashRouter = createHashRouter([
+	{ path: "pokemon/:pokemonName", element: <Pokemon /> },
+	{ path: "", element: <Pokedex /> },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+	<RouterProvider router={hashRouter}>
+		<App />
+	</RouterProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
